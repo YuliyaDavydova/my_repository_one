@@ -1,0 +1,64 @@
+%scaner_name lang-descr
+
+%codes_type lexem_code
+%codes
+Id
+%ident_name Id
+
+%token_fields
+"usigned __int128 int_val; __float128 float_val;"
+
+%class_members
+"unsigned __int128 int_part; __float128 frac_part; ssize_t power; ssize_t sign"
+
+%codes
+String, If,         Float,
+Else,   Var,        Int,
+Bool,   Char,       Void,
+Array,  True,       False,
+Proto,  Func,       Const,
+Elif,   Endif,      For,
+In,     While,      Repeat,
+Until,  Exit,       Continue,
+Return, Read,       Print,
+Kw_var,	Kw_string,  Kw_float,
+Kw_int,	Kw_char,    Kw_void,
+Kw_bool,
+
+EQ,        Plus,        Minus,
+Mul,       Div,         Mod,
+LT,        GT,          LEQ,
+GEQ,       NEQ,         FDiv,
+Lor,       LNor,        LNot,
+LAnd,      LNand,       LXor,
+LNXor,     Bor,         BNor,
+BXor,      BNXor,       BAnd,
+BNAnd,     LShift,      RShift,
+BNot,      Pow,         FPow,
+Assign,    endif_block, begin_block,
+cond_op,   after_label, elem_mass,
+Semicolon, Comma,        Dim_size,
+Colon
+
+%idents {[:Letter:]|[:letter:]|_}{[:Letter:]|[:letter:]|_|[:digits:]}
+
+%keywords
+"if" : If, "else" : Else, "int" : Kw_int, "var": Var, "float" : Kw_float,"bool":Kw_bool,
+"char" : Kw_char, "string" :Kw_string, "void" : Kw_void, "array" : Array, "true": True,
+"false": False,"proto": Proto,"func": Func, "const": Const, "elif": Elif, "endif": Endif,
+"for": For,"in": In,"while": While, "repeat": Repeat, "until": Until, "exit": Exit,
+"continue": Continue, "return": Return, "read": Read, "print":Print
+
+%delimiters
+"=" : EQ, "+" : Plus, "-" : Minus, "*" : Mul, "/" : Div, "%": Mod,"<": LT, ">":GT, 
+"<=": LEQ, ">=":GEQ, "!=":NEQ,"/.": FDiv, "||": Lor,"!||": LNor, "!":LNot, "&&": LAnd, 
+"!&&": LNAnd, "^^": LXor,"!^^": LNXor,"^":BXor,"~^":BNXor,"|":Bor, "~|":BNor,"&":BAnd, 
+"~&":BNAnd, "«":LShift,"»":RShift,"~":BNot, "**":Pow, "**.":FPow,":=":Assign, 
+"{}":endif_block, "()":begin_block, "#":Dim_size, "?":cond_op,";":Semicolon, ",":Comma, 
+"::":after_label,"[]":elem_mass,":":Colon
+
+%strings "buffer.clean();":"token.code=(buffer.length()==1)?Char:String;"
+{"([:ndg:]|"")*"}
+{"([:ndq:]$write|""$write)*"} 
+  
+%numbers 
