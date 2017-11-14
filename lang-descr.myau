@@ -53,12 +53,11 @@ Colon
 "=" : EQ, "+" : Plus, "-" : Minus, "*" : Mul, "/" : Div, "%": Mod,"<": LT, ">":GT, 
 "<=": LEQ, ">=":GEQ, "!=":NEQ,"/.": FDiv, "||": Lor,"!||": LNor, "!":LNot, "&&": LAnd, 
 "!&&": LNAnd, "^^": LXor,"!^^": LNXor,"^":BXor,"~^":BNXor,"|":Bor, "~|":BNor,"&":BAnd, 
-"~&":BNAnd, "«":LShift,"»":RShift,"~":BNot, "**":Pow, "**.":FPow,":=":Assign, 
-"{}":endif_block, "()":begin_block, "#":Dim_size, "?":cond_op,";":Semicolon, ",":Comma, 
-"::":after_label,"[]":elem_mass,":":Colon
+"~&":BNAnd, "<<":LShift,">>":RShift,"~":BNot, "**":Pow, "**.":FPow,":=":Assign, 
+"{":Opening_brace, "}":Closing_brace, "(":Opening_parenthesis, ")":Closing_parenthesis, "#":Dim_size, "?":cond_op, ";":Semicolon, ",":Comma, 
+"::":after_label, "[":Opening_bracket, "]":Сlosing_bracket, ":":Colon
 
 %strings "buffer.clean();":"token.code=(buffer.length()==1)?Char:String;"
-{"([:ndg:]|"")*"}
 {"([:ndq:]$write|""$write)*"} 
   
 %numbers 
