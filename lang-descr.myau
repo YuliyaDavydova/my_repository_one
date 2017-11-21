@@ -58,7 +58,29 @@ Colon
 ":":Colon
 
 
+%impl_additions 
+"size_t digit2int(char32_t){ 
+         if ((digits>= '0') && (digits <= '9')) 
+            return digits - '0'; 
+         else
+            return -1;
+}"
+
 %strings "buffer.clean();":"token.code=(buffer.length()==1)?Char:String;"
-{"([:ndq:]$write|""$write)*"} 
-  
-%numbers 
+{"([:ndq:]$write|""$write)*"}   
+
+%numbers  "int_part= 0;frac_part=1;is_float=0;sign=0;power=0;num_of_digits_in_frac_part=0; token.code = Number;" : "token.int_val = int_part;"
+
+ %action addDecdigit "frac_part=frac_part*10+digit2int(ch)"
+  %action addDecDigit "int_part = int_part * 10 + digitToInt(ch);" 
+  %action addOctDigit "int_part = (int_part<< 3) + digitToInt(ch);
+  %action addBinDigit "int_part = (int_part<< 1) + digitToInt(ch);"
+  %action addHexDigit "int_part = (int_part << 4) + digitToInt(ch);"
+
+
+{[:digits:](?[digits:])*$addDecDigit+ | 0(o|O)[:odigits:](?[odigits:])*$addOctDigit+ |
+0(b|B)[:bdigits:](?[bdigits:])*$addBinDigit+ | 0(x|X)[:xdigits:](?[xdigits:])*$addHexDigit+|[:digits:](?[digits:])*$addDecdigit+(.$addDecdigit+[:digits:](?[digits:])*((E|e)(+|-)?[:digits:](?[digits:])*)?)}
+
+
+
+
