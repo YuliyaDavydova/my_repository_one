@@ -17,7 +17,7 @@ LNXor,             Bor,                BNor,
 BXor,              BNXor,              BAnd,
 BNAnd,             LShift,             RShift,
 BNot,              Pow,                FPow,
-Assign,            Open_func,          close_func,
+Assign,            Open_cur_bracket,   close_cur_bracket,
 Open_round,        Close_round,        cond_op,
 after_label,       Open_square,        Close_square,
 Semicolon,         Comma,              Dim_size,
@@ -48,7 +48,8 @@ Kw_int,	Kw_char,    Kw_void
 "<=": LEQ, ">=":GEQ, "!=":Nequal,"/.": FDiv, "||": Lor,"!||": LNor, "!":LNot, "&&": LAnd, 
 "!&&": LNAnd, "^^": LXor,"!^^": LNXor,"^":BXor,"~^":BNXor,"|":Bor, "~|":BNor,"&":BAnd, 
 "~&":BNAnd, "<<":LShift,">>":RShift,"~":BNot, "**":Pow, "**.":FPow,":=":Assign, 
-"{":Open_func,"}":close_func, "(":Open_round, ")":Close_round,"#":Dim_size, "?":cond_op,";":Semicolon,"::":after_label,"[":  Open_square,"]":Close_square,":":Colon, ",": Comma
+"{":Open_cur_bracket,"}":close_cur_bracket, "(":Open_round, ")":Close_round,"#":Dim_size, "?":cond_op,";":Semicolon,"::":after_label,"[":  Open_square,"]":Close_square,":":Colon, ",": Comma
+
 
 %impl_additions "
 #include <quadmath> 
