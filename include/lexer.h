@@ -27,7 +27,7 @@ enum lexemcodes : unsigned short {
     Int,             Bool,             Char,       
     Void,            Array,            True,       
     False,           Proto,            Func,       
-    Const,           Elif,             Endif,      
+    Const,           Elseif,           Endif,      
     For,             In,               While,      
     Repeat,          Until,            Exit,       
     Continue,        Return,           Read,       
@@ -40,8 +40,6 @@ struct Lexem_info{
     lexemcodes code;
     union{
         size_t    ident_index;
-        size_t    string_index;
-        char32_t  c;
 
     };
 };
@@ -57,7 +55,7 @@ public:
 private:
     enum Automaton_name{
         A_start,     A_unknown, A_idKeyword, 
-        A_delimiter, A_number,  A_string
+        A_delimiter, A_number
     };
     Automaton_name automaton; /* current automaton */
 
@@ -76,11 +74,11 @@ private:
     /* Lexeme processing functions: */
     bool start_proc();     bool unknown_proc();   
     bool idkeyword_proc(); bool delimiter_proc(); 
-    bool number_proc();    bool string_proc();
+    bool number_proc();
     /* functions for performing actions in case of an
      * unexpected end of the token */
     void none_proc();            void unknown_final_proc();   
     void idkeyword_final_proc(); void delimiter_final_proc(); 
-    void number_final_proc();    void string_final_proc();
+    void number_final_proc();
 };
 #endif

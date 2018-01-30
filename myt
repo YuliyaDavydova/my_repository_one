@@ -1,4 +1,4 @@
-%scaner_name  Lexer 
+%scaner_name  Lexer
 
 %codes_type lexemcodes  
 
@@ -23,27 +23,26 @@ after_label,       Open_square,        Close_square,
 Semicolon,         Comma,              Dim_size,
 Colon,
 
-
 Then,
 String, If,         Float,
 Else,   Var,        Int,
 Bool,   Char,       Void,
 Array,  True,       False,
 Proto,  Func,       Const,
-Elif,   Endif,      For,
+Elseif,   Endif,      For,
 In,     While,      Repeat,
 Until,  Exit,       Continue,
 Return, Read,       Print,
 Kw_bool,Kw_string,  Kw_float,
-Kw_int,	Kw_char,    Kw_void  
-
+Kw_int,	Kw_char,    Kw_void
 
 %keywords
 "if" : If, "else" : Else, "int" : Kw_int, "var": Var, "float" : Kw_float,"bool":Kw_bool,
 "char" : Kw_char, "string" :Kw_string, "void" : Kw_void, "array" : Array, "true": True,
-"false": False,"proto": Proto,"func": Func, "const": Const, "elif": Elif, "endif": Endif,
+"false": False,"proto": Proto,"func": Func, "const": Const, "elseif": Elseif, "endif": Endif,
 "for": For,"in": In,"while": While, "repeat": Repeat, "until": Until, "exit": Exit,
-"continue": Continue, "return": Return, "read": Read, "print":Print, "then":Then
+"continue": Continue, "return": Return, "read": Read, "print":Print,"then":Then
+
 %delimiters
 "=" : Equal, "+" : Plus, "-" : Minus, "*" : Mul, "/" : Div, "%": Mod,"<": LT, ">":GT, 
 "<=": LEQ, ">=":GEQ, "!=":Nequal,"/.": FDiv, "||": Lor,"!||": LNor, "!":LNot, "&&": LAnd, 
@@ -51,8 +50,6 @@ Kw_int,	Kw_char,    Kw_void
 "~&":BNAnd, "<<":LShift,">>":RShift,"~":BNot, "**":Pow, "**.":FPow,":=":Assign, 
 "{":Open_cur_bracket,"}":close_cur_bracket, "(":Open_round, ")":Close_round,"#":Dim_size, "?":cond_op,";":Semicolon,"::":after_label,"[":  Open_square,"]":Close_square,":":Colon, ",": Comma
 
-%strings "buffer.clean();":"token.code=(buffer.length()==1)?Char:String;"
-{"([:ndq:]$write|""$write)*"}  
 
 %impl_additions "
 #include <quadmath> 
@@ -93,3 +90,4 @@ token.int_val = int_value;
 |0o[:odigits:]$addOctDigit('?[:odigits:]$addOctDigit)*|
 0(b|B)[:bdigits:]$AddBinNumb('?[:bdigits:]$AddBinNumb)*|
 0(x|X)[:xdigits:]$addHexDigit('?[:xdigits:]$addHexDigit)*}
+
